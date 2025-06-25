@@ -1,0 +1,10 @@
+namespace: argocd
+deployment: 
+  name: argocd-test-dep
+  labels:
+    app: argocd-test-app
+  replicas: 1
+  image: europe-west4-docker.pkg.dev/GOOGLE_CLOUD_PROJECT/gt-server/sample:5831c48
+
+service:
+  name: argocd-test-service

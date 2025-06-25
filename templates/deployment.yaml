@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  labels: {{ .Values.deployment.lables.app }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.labels.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.labels.app }}
+    spec:
+    containers:
+    - name: {{ .Values.deployment.labels.app }}
+      image: {{ .Values.deployment.image }}  #europe-west4-docker.pkg.dev/GOOGLE_CLOUD_PROJECT/gt-server/sample:COMMIT_SHA
+      ports:
+      - containerPort: 8080
